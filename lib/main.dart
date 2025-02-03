@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'services/profile_service.dart';
+import 'models/profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,58 +19,49 @@ class MyApp extends StatelessWidget {
 
 // 메인 화면 (프로필 목록)
 class ProfileListScreen extends StatelessWidget {
-  // 프로필 예제 데이터
-  final List<Profile> profiles = [
-    Profile(
-      name: "홍길동",
-      imageURL: "assets/cat1.jpg",
-      intro: "안녕하세요, 개발자 홍길동입니다."
-    ),
-    Profile(
-        name: "이몽룡",
-        imageURL: "assets/dog1.jpeg",
-        intro: "안녕하세요, 홍보팀 이몽룡입니다."
-    ),
-    Profile(
-        name: "성춘향",
-        imageURL: "assets/ham1.jpeg",
-        intro: "안녕하세요, 디자이너 성춘향입니다."
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Profile List")),
-      // ListView 를 이용하면 다수의 항목들을 다룰 수 있다.
-      body: ListView.builder(
-        // 다룰 항목들의 개수와 iterator 를 설정
-        itemCount: profiles.length,
-        itemBuilder: (context, index) {
-          final profile = profiles[index];
-          // ListTile 위젯을 이용하면 이미 만들어진 리스트 폼을 끌어와 쓸 수 있다.
-          // leading : 왼쪽 아이콘 (동그라미 프로필 아이콘)
-          // title: 제목
-          // subtitle: 부제목
-          // onTap: 클릭 이벤트
-          return ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(profile.imageURL),
-            ),
-            title: Text(profile.name),
-            subtitle: Text(profile.intro),
-            onTap: () {
-              // Navigator 는 페이지 이동을 관리하는 위젯이다.
-              // push 를 이용해 새로운 화면으로 이동이 가능하다.
-              Navigator.push(
-                context, // 새로운 화면에 넘길 내용
-                MaterialPageRoute(
-                    builder: (context) => ProfileDetailScreen(profile: profile),
-                ),
-              );
-            },
+      // 퓨쳐 빌더를 이용하면 비동기로 처리하는 데이터를 다룰 수 있다.
+      body: FutureBuilder<List<Profile>>(
+        future: loadProfiles(), // 비동기로 다루는 json 파일
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator()); // 로딩창
+          } else if (snapshot.hasError) {
+            return Center(child: Text("데이터를 불러오는 데 실패하였습니다.")); // 오류 처리
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return Center(child: Text("프로필이 없습니다.")); // 데이터 미존재
+          }
+
+          List<Profile> profiles = snapshot.data!; // 로드한 데이터
+          // 로드 데이터를 리스트 뷰에 뿌려준다
+          return ListView.builder(
+            // 데이터 개수와 이터레이터 설정
+            itemCount: profiles.length,
+              itemBuilder: (context, index) {
+                final profile = profiles[index];
+                return ListTile(
+                  leading: CircleAvatar(
+                    // 프로필 아이콘 이미지는 웹상에서 가져오는 것이므로 NetworkImage 위젯을 사용
+                    backgroundImage: NetworkImage(profile.imageURL),
+                  ),
+                  title: Text(profile.name), // 학생 이름
+                  subtitle: Text("${profile.intro} | ${profile.times}"), // 학년 및 공부 시간대
+                  trailing: Text(profile.subjects.join(", ")), // 수강 과목
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProfileDetailScreen(profile: profile)
+                      )
+                    );
+                  },
+                );
+              }
           );
-        },
+        }
       ),
     );
   }
@@ -99,19 +92,11 @@ class ProfileDetailScreen extends StatelessWidget {
             Text(profile.name, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             SizedBox(height: 8),
             Text(profile.intro, style: TextStyle(fontSize: 16)),
+            Text(profile.times, style: TextStyle(fontSize: 16)),
+            Text(profile.subjects.join(", "), style: TextStyle(fontSize: 16)),
           ],
         ),
       ),
     );
   }
-}
-
-
-// 프로필 클래스 작성
-class Profile {
-  final String name;
-  final String imageURL;
-  final String intro;
-
-  Profile({required this.name, required this.imageURL, required this.intro});
 }
