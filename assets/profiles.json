@@ -1,142 +1,107 @@
-[
-  {
-    "name": "김민준",
-    "imageURL": "https://randomuser.me/api/portraits/men/0.jpg",
-    "intro": "초6",
-    "subjects": ["국어", "수학"],
-    "times": "14:00~16:00"
-  },
-  {
-    "name": "이서윤",
-    "imageURL": "https://randomuser.me/api/portraits/women/1.jpg",
-    "intro": "초5",
-    "subjects": ["영어"],
-    "times": "13:30~15:30"
-  },
-  {
-    "name": "박지후",
-    "imageURL": "https://randomuser.me/api/portraits/men/2.jpg",
-    "intro": "초4",
-    "subjects": ["국어", "영어", "수학"],
-    "times": "15:00~17:00"
-  },
-  {
-    "name": "정다인",
-    "imageURL": "https://randomuser.me/api/portraits/women/3.jpg",
-    "intro": "초6",
-    "subjects": ["영어", "수학"],
-    "times": "14:30~16:30"
-  },
-  {
-    "name": "한도윤",
-    "imageURL": "https://randomuser.me/api/portraits/men/4.jpg",
-    "intro": "초5",
-    "subjects": ["국어"],
-    "times": "16:00~18:00"
-  },
-  {
-    "name": "김지아",
-    "imageURL": "https://randomuser.me/api/portraits/women/5.jpg",
-    "intro": "초4",
-    "subjects": ["수학", "영어"],
-    "times": "13:00~15:00"
-  },
-  {
-    "name": "이하준",
-    "imageURL": "https://randomuser.me/api/portraits/men/6.jpg",
-    "intro": "초6",
-    "subjects": ["국어", "수학"],
-    "times": "14:00~16:00"
-  },
-  {
-    "name": "최예은",
-    "imageURL": "https://randomuser.me/api/portraits/women/7.jpg",
-    "intro": "초5",
-    "subjects": ["국어", "영어"],
-    "times": "13:30~15:30"
-  },
-  {
-    "name": "장민호",
-    "imageURL": "https://randomuser.me/api/portraits/men/8.jpg",
-    "intro": "초4",
-    "subjects": ["국어", "수학"],
-    "times": "15:00~17:00"
-  },
-  {
-    "name": "오윤서",
-    "imageURL": "https://randomuser.me/api/portraits/women/9.jpg",
-    "intro": "초6",
-    "subjects": ["영어", "수학"],
-    "times": "14:30~16:30"
-  },
-  {
-    "name": "강태윤",
-    "imageURL": "https://randomuser.me/api/portraits/men/10.jpg",
-    "intro": "초5",
-    "subjects": ["국어", "영어"],
-    "times": "16:00~18:00"
-  },
-  {
-    "name": "윤서연",
-    "imageURL": "https://randomuser.me/api/portraits/women/11.jpg",
-    "intro": "초4",
-    "subjects": ["수학"],
-    "times": "13:00~15:00"
-  },
-  {
-    "name": "배도현",
-    "imageURL": "https://randomuser.me/api/portraits/men/12.jpg",
-    "intro": "초6",
-    "subjects": ["국어", "수학"],
-    "times": "14:00~16:00"
-  },
-  {
-    "name": "서하은",
-    "imageURL": "https://randomuser.me/api/portraits/women/13.jpg",
-    "intro": "초5",
-    "subjects": ["영어"],
-    "times": "13:30~15:30"
-  },
-  {
-    "name": "권민석",
-    "imageURL": "https://randomuser.me/api/portraits/men/14.jpg",
-    "intro": "초4",
-    "subjects": ["국어", "영어", "수학"],
-    "times": "15:00~17:00"
-  },
-  {
-    "name": "송유나",
-    "imageURL": "https://randomuser.me/api/portraits/women/15.jpg",
-    "intro": "초6",
-    "subjects": ["영어", "수학"],
-    "times": "14:30~16:30"
-  },
-  {
-    "name": "임동현",
-    "imageURL": "https://randomuser.me/api/portraits/men/16.jpg",
-    "intro": "초5",
-    "subjects": ["국어"],
-    "times": "16:00~18:00"
-  },
-  {
-    "name": "조은재",
-    "imageURL": "https://randomuser.me/api/portraits/women/17.jpg",
-    "intro": "초4",
-    "subjects": ["국어", "수학"],
-    "times": "13:00~15:00"
-  },
-  {
-    "name": "신도훈",
-    "imageURL": "https://randomuser.me/api/portraits/men/18.jpg",
-    "intro": "초6",
-    "subjects": ["국어", "수학"],
-    "times": "14:00~16:00"
-  },
-  {
-    "name": "정예지",
-    "imageURL": "https://randomuser.me/api/portraits/women/19.jpg",
-    "intro": "초5",
-    "subjects": ["국어", "영어"],
-    "times": "13:30~15:30"
-  }
-]
+{
+  "students": [
+    {
+      "profile": {
+        "name": "김민수",
+        "imageURL": "https://example.com/김민수.jpg",
+        "subjects": ["국어", "영어", "수학"],
+        "times": {
+          "weeks": ["수", "목", "화"],
+          "times": "08:00~10:00"
+        }
+      },
+      "grade": "초5",
+      "my_tutor": "이선생"
+    },
+    {
+      "profile": {
+        "name": "이서연",
+        "imageURL": "https://example.com/이서연.jpg",
+        "subjects": ["국어", "영어", "수학"],
+        "times": {
+          "weeks": ["수", "토", "월"],
+          "times": "15:00~17:00"
+        }
+      },
+      "grade": "초6",
+      "my_tutor": "이선생"
+    },
+    {
+      "profile": {
+        "name": "박지훈",
+        "imageURL": "https://example.com/박지훈.jpg",
+        "subjects": ["국어", "영어", "수학"],
+        "times": {
+          "weeks": ["월", "토", "목"],
+          "times": "13:00~15:00"
+        }
+      },
+      "grade": "초6",
+      "my_tutor": "박선생"
+    },
+    {
+      "profile": {
+        "name": "정다은",
+        "imageURL": "https://example.com/정다은.jpg",
+        "subjects": ["국어", "영어", "수학"],
+        "times": {
+          "weeks": ["월", "목", "화"],
+          "times": "14:00~16:00"
+        }
+      },
+      "grade": "중1",
+      "my_tutor": "최선생"
+    },
+    {
+      "profile": {
+        "name": "최민호",
+        "imageURL": "https://example.com/최민호.jpg",
+        "subjects": ["국어", "영어", "수학"],
+        "times": {
+          "weeks": ["월", "금", "화"],
+          "times": "15:00~17:00"
+        }
+      },
+      "grade": "초6",
+      "my_tutor": "박선생"
+    }
+  ],
+  "tutors": [
+    {
+      "profile": {
+        "name": "박선생",
+        "imageURL": "https://example.com/박선생.jpg",
+        "subjects": ["국어", "영어", "수학"],
+        "times": {
+          "weeks": ["목", "금", "토", "화"],
+          "times": "15:00~17:00"
+        }
+      },
+      "my_students": ["박지훈", "최민호"]
+    },
+    {
+      "profile": {
+        "name": "이선생",
+        "imageURL": "https://example.com/이선생.jpg",
+        "subjects": ["국어", "영어", "수학"],
+        "times": {
+          "weeks": ["수", "금", "토", "화"],
+          "times": "16:00~18:00"
+        }
+      },
+      "my_students": ["김민수", "이서연"]
+    },
+    {
+      "profile": {
+        "name": "최선생",
+        "imageURL": "https://example.com/최선생.jpg",
+        "subjects": ["국어", "영어", "수학"],
+        "times": {
+          "weeks": ["월", "목", "수", "금"],
+          "times": "08:00~10:00"
+        }
+      },
+      "my_students": ["정다은"]
+    }
+  ]
+}
